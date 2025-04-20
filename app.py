@@ -16,17 +16,16 @@ credentials = {
     "usernames": {
         "john": {
             "name": "John Doe",
-            "password": hashed_passwords[0],
+            "password": "$2b$12$MSSgzVgXbOkk.ZmTFtfspu6C18P1TFP8m96aGoSAqL6JDdxCBsZRO",
             "email": "john@example.com"
         },
         "alice": {
             "name": "Alice Smith",
-            "password": hashed_passwords[1],
+            "password": "$2b$12$29ylg1RHp/7wCUyDqynvCOEFw6zUkA/vSKddpdBFBB8y7fa7bQacO",
             "email": "alice@example.com"
         }
     }
 }
-
 # --- AUTHENTICATOR SETUP ---
 authenticator = stauth.Authenticate(
     credentials,
