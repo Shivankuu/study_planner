@@ -10,22 +10,22 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-# --- USER CREDENTIALS SETUP ---
-hashed_passwords = stauth.Hasher(['123', 'abc']).generate()
+# --- AUTHENTICATION CONFIGURATION ---
 credentials = {
     "usernames": {
         "john": {
             "name": "John Doe",
-            "password": "$2b$12$MSSgzVgXbOkk.ZmTFtfspu6C18P1TFP8m96aGoSAqL6JDdxCBsZRO",
+            "password": "$2b$12$MSSgzVgXbOkk.ZmTFtfspu6C18P1TFP8m96aGoSAqL6JDdxCBsZRO",  # hashed '123'
             "email": "john@example.com"
         },
         "alice": {
             "name": "Alice Smith",
-            "password": "$2b$12$29ylg1RHp/7wCUyDqynvCOEFw6zUkA/vSKddpdBFBB8y7fa7bQacO",
+            "password": "$2b$12$29ylg1RHp/7wCUyDqynvCOEFw6zUkA/vSKddpdBFBB8y7fa7bQacO",  # hashed 'abc'
             "email": "alice@example.com"
         }
     }
 }
+
 # --- AUTHENTICATOR SETUP ---
 authenticator = stauth.Authenticate(
     credentials,
@@ -310,6 +310,7 @@ with st.expander("🔑 Not registered or forgot password?"):
                 st.success("Password reset successfully!")
             except Exception as e:
                 st.error(f"Error resetting password: {e}")
+
 
 
 
