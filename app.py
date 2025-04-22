@@ -35,10 +35,7 @@ authenticator = stauth.Authenticate(
 )
 
 # --- LOGIN ---
-name, authentication_status, username = authenticator.login(
-    fields={"Form name": "Login"},
-    location="main"
-)
+name, authentication_status, username = authenticator.login("Login", "main")
 
 # --- GOOGLE SHEETS AUTH FUNCTION ---
 def get_gsheet_client():
@@ -109,7 +106,6 @@ def generate_study_plan(subject_difficulties, study_hours_per_day, deadline, tim
 
             day_plan[subject] = " / ".join(time_allocations)
 
-            # Add revision days
             for revision_gap in [2, 4, 7, 15]:
                 revision_day = date + timedelta(days=revision_gap)
                 if revision_day <= deadline:
@@ -117,7 +113,6 @@ def generate_study_plan(subject_difficulties, study_hours_per_day, deadline, tim
 
         plan.append(day_plan)
 
-    # Add revisions to plan
     for revision_date in sorted({d for sublist in revisions.values() for d in sublist}):
         if revision_date > deadline:
             continue
@@ -310,6 +305,7 @@ with st.expander("🔑 Not registered or forgot password?"):
                 st.success("Password reset successfully!")
             except Exception as e:
                 st.error(f"Error resetting password: {e}")
+
 
 
 
