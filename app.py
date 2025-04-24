@@ -33,12 +33,7 @@ authenticator = stauth.Authenticate(
     cookie_expiry_days=30
 )
 # --- LOGIN ---
-login_result = authenticator.login(location='main')
-
-if login_result is not None:
-    name, authentication_status, username = login_result
-else:
-    name, authentication_status, username = None, None, None
+name, authentication_status, username = authenticator.login('Login', 'main')
 # --- GOOGLE SHEETS AUTH FUNCTION ---
 def get_gsheet_client():
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
