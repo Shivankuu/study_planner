@@ -1,4 +1,37 @@
 import streamlit as st
+import streamlit_authenticator as stauth
+import yaml
+from yaml.loader import SafeLoader
+
+# --- PAGE CONFIG ---
+st.set_page_config(page_title="AI Study Planner", layout="wide")
+
+# --- USER CREDENTIALS CONFIG ---
+with open('./config.yaml') as file:
+    config = yaml.load(file, Loader=SafeLoader)
+
+authenticator = stauth.Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days']
+)
+
+# --- LOGIN ---
+try:
+    name, authentication_status, username = authenticator.login("Login", location="sidebar")
+
+    if authentication_status == False:
+        st.error("Username/password is incorrect")
+    elif authentication_status == None:
+        st.warning("Please enter your username and password")
+    elif authentication_status:
+        st.success(f"Welcome {name} 👋")
+        # Now you can load your app content here
+
+except ValueError as e:
+    st.error(f"Authentication error: {e}")
+import streamlit as st
 import pandas as pd
 from datetime import datetime, timedelta
 import streamlit_authenticator as stauth
