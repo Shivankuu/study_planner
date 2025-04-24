@@ -38,9 +38,7 @@ authenticator = stauth.Authenticate(
 )
 
 # --- LOGIN ---
-name, authentication_status, username = authenticator.login(form_name="Login", location="main")
-
-
+name, authentication_status, username = authenticator.login(form_name="Login", location="sidebar")
 # Debug login state
 st.write("Auth status:", authentication_status)
 st.write("Logged in user:", username)
