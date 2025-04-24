@@ -9,7 +9,6 @@ from oauth2client.service_account import ServiceAccountCredentials
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-st.set_option('server.enableWebsocketCompression', False)
 # --- AUTHENTICATION CONFIGURATION ---
 credentials = {
     "usernames": {
