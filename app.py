@@ -297,7 +297,7 @@ with st.expander("🔑 Not registered or forgot password?"):
     with col1:
         if st.button("Register New User"):
             try:
-                authenticator.register_user(pre_authorization=False)
+                authenticator.register_user()
                 st.success("User registered successfully!")
             except Exception as e:
                 st.error(f"Error registering: {e}")
