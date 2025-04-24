@@ -9,6 +9,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+st.write("Authenticator version:")
+st.write(stauth.__version__)
 # --- AUTHENTICATION CONFIGURATION ---
 credentials = {
     "usernames": {
